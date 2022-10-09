@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "0a909451-b2bd-45c8-92c4-52c6bfc6f333",
+		"name": "ahmet-daldemir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ahmet DALDEMİR",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "ahmetdaldemir@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "198711ad",
+							"type": "default"
+						},
+						{
+							"key": "c_password",
+							"value": "198711ad",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "ahmetdaldemir@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "198711ad",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4|CrEWFXqjhigHUKphuCgeqZ87wwxj76zqsri70HM9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "2|JtW51LpPTAfdc83OIL2DudWdQqFn3sCagvTAdwms",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/api/customer/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"customer",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer-Insert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4|CrEWFXqjhigHUKphuCgeqZ87wwxj76zqsri70HM9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "2|JtW51LpPTAfdc83OIL2DudWdQqFn3sCagvTAdwms",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Türker Jöntürk\",\n        \"since\": \"2014-06-28\",\n        \"revenue\": \"492.12\"\n    },\n    {\n        \"name\": \"Kaptan Devopuz\",\n        \"since\": \"2015-01-15\",\n        \"revenue\": \"1505.95\"\n    },\n    {\n         \"name\": \"İsa Sonuyumaz\",\n        \"since\": \"2016-02-11\",\n        \"revenue\": \"0.00\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer-Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "4|CrEWFXqjhigHUKphuCgeqZ87wwxj76zqsri70HM9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "2|JtW51LpPTAfdc83OIL2DudWdQqFn3sCagvTAdwms",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\" :1,\n        \"name\": \"Türker Jöntüsk\",\n        \"since\": \"2014-06-28\",\n        \"revenue\": \"492.12\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|JtW51LpPTAfdc83OIL2DudWdQqFn3sCagvTAdwms",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": 1,\n        \"customerId\": 1,\n        \"items\": [\n            {\n                \"productId\": 102,\n                \"quantity\": 10,\n                \"unitPrice\": \"11.28\",\n                \"total\": \"112.80\"\n            }\n        ],\n        \"total\": \"112.80\"\n    },\n    {\n        \"id\": 2,\n        \"customerId\": 2,\n        \"items\": [\n            {\n                \"productId\": 101,\n                \"quantity\": 2,\n                \"unitPrice\": \"49.50\",\n                \"total\": \"99.00\"\n            },\n            {\n                \"productId\": 100,\n                \"quantity\": 1,\n                \"unitPrice\": \"120.75\",\n                \"total\": \"120.75\"\n            }\n        ],\n        \"total\": \"219.75\"\n    },\n    {\n        \"id\": 3,\n        \"customerId\": 3,\n        \"items\": [\n            {\n                \"productId\": 102,\n                \"quantity\": 6,\n                \"unitPrice\": \"11.28\",\n                \"total\": \"67.68\"\n            },\n            {\n                \"productId\": 100,\n                \"quantity\": 10,\n                \"unitPrice\": \"120.75\",\n                \"total\": \"1207.50\"\n            }\n        ],\n        \"total\": \"1275.18\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|JtW51LpPTAfdc83OIL2DudWdQqFn3sCagvTAdwms",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": 100,\n        \"name\": \"Black&Decker A7062 40 Parça Cırcırlı Tornavida Seti\",\n        \"category\": 1,\n        \"price\": \"120.75\",\n        \"stock\": 10\n    },\n    {\n        \"id\": 101,\n        \"name\": \"Reko Mini Tamir Hassas Tornavida Seti 32'li\",\n        \"category\": 1,\n        \"price\": \"49.50\",\n        \"stock\": 10\n    },\n    {\n        \"id\": 102,\n        \"name\": \"Viko Karre Anahtar - Beyaz\",\n        \"category\": 2,\n        \"price\": \"11.28\",\n        \"stock\": 10\n    },\n    {\n        \"id\": 103,\n        \"name\": \"Legrand Salbei Anahtar, Alüminyum\",\n        \"category\": 2,\n        \"price\": \"22.80\",\n        \"stock\": 10\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "2|JtW51LpPTAfdc83OIL2DudWdQqFn3sCagvTAdwms",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Test1\"\n    },\n      {\n        \"name\": \"Test2\"\n    },  {\n        \"name\": \"Test3\"\n    },  {\n        \"name\": \"Test4\"\n    }\n   \n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"category"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

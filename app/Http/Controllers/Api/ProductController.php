@@ -56,7 +56,7 @@ class ProductController extends BaseController
         $data = $validator->validated();
         $product = $this->productRepository->create($data);
 
-        return $this->success([$product],'Order Saved');
+        return $this->success([$product],'Product Saved');
 
     }
 

@@ -57,7 +57,7 @@ class OrderController extends BaseController
         $data = $validator->validated();
         $order = $this->orderRepository->create($data);
 
-        return $this->success([$order],'Order Saved');
+        return $this->success([$order],'Order Message');
 
     }
 
@@ -92,17 +92,7 @@ class OrderController extends BaseController
     public function update(OrderRequest $request, $id)
     {
 
-        $order = $this->orderRepository->update($request);
-
-        if ($this->orderRepository->hasErrors()) {
-            return $this->error('Error',404,[
-                $this->orderRepository->getErrors()
-            ]);
-        }
-
-        return $this->success('Success',[
-            new OrderResource($order)
-        ], 200);
+       //
     }
 
     /**

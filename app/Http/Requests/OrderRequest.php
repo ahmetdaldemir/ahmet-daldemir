@@ -17,6 +17,7 @@ class OrderRequest extends DecoratedValidator
     public function rules():array
     {
         return array_merge([
+            '*.id' => 'required|integer',
             '*.customerId' => 'required|integer',
             '*.items.*.productId' => 'required|integer',
             '*.items.*.quantity' => 'required|integer',

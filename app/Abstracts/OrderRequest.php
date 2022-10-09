@@ -22,9 +22,10 @@ abstract class OrderRequest
 
     public function stockControl($items):void
     {
-      foreach($items as $product)
+
+        foreach($items as $product)
       {
-           $model =  Product::find($product['productId']);
+          $model =  Product::find($product['productId']);
            if(empty($model) || $model->stock < $product['quantity'])
            {
                $this->addError(Translator::STOCK_AVAILABILITY);
@@ -35,17 +36,18 @@ abstract class OrderRequest
 
     public function priceControl($items,$total):void
     {
+
         $totalPrice = 0;
-        foreach($items as $product)
+        foreach($items['items'] as $product)
         {
             $model = Product::find($product['productId']);
-            if(empty($model) || $model['price'] != $product->unitPrice)
+            if(empty($model) || $model['price'] != $product['unitPrice'])
             {
                 $this->addErrors(['error' => Translator::STOCK_AVAILABILITY]);
                 continue;
             }
 
-            $totalPrice += $product->unitPrice;
+            $totalPrice += $product['unitPrice'];
             if($totalPrice != $total)
             {
                 $this->addErrors(['error' => Translator::TOTAL_PRICE_ARE_NOT_EQUAL]);

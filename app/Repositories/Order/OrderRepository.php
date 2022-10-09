@@ -5,6 +5,7 @@ namespace App\Repositories\Order;
 
 
 use App\Abstracts\OrderRequest;
+use App\Jobs\DiscountProcess;
 use App\Models\Order;
 use App\Traits\HasErrors;
 
@@ -28,40 +29,28 @@ class OrderRepository extends OrderRequest implements OrderInterface
 
     public function create(array $data)
     {
+        $message = [];
         foreach ($data as $item)
         {
             $this->stockControl($item['items']);
             if ($this->hasErrors()) {
-                return $this;
-            }
-            $this->priceControl($data->items, $data->total);
-            if ($this->hasErrors()) {
-                return $this->getErrors();
+                $message[$item['id']] = $this->getErrors();
             }
 
-            $this->model->customerId = $data->customerId;
-            $this->model->total = $data->total;
-            $this->model->items = json_encode($data->items);
-            $this->model->save();
+            $order = new $this->model;
+            $order->customerId = $item['customerId'];
+            $order->total = $item['total'];
+            $order->items = json_encode($item['items']);
+            $order->save();
+            $message[$item['id']] = $order;
+            dispatch(new DiscountProcess($item,$order->id));
         }
-
+        return $message;
     }
 
     public function update(array $data)
     {
-        $this->stockControl($data->items);
-        if ($this->hasErrors()) {
-            return $this->getErrors();
-        }
-        $this->priceControl($data->items, $data->total);
-        if ($this->hasErrors()) {
-            return $this->getErrors();
-        }
-        $order = $this->model->find($id);
-        $order->customerId = $data->customerId;
-        $order->total = $data->total;
-        $order->items = json_encode($data->items);
-        $order->save();
+
     }
 
     public function delete($id)
